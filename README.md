@@ -7,6 +7,14 @@ See https://github.com/trustyuri/trustyuri.
 This library is work in progress.
 
 
+Dependencies
+------------
+
+The regex package has to be installed:
+
+    ?- pack_install(regex).
+
+
 License
 -------
 

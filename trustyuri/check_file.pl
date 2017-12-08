@@ -2,6 +2,7 @@
   run/0
 ]).
 
+:- use_module(trustyuri_utils).
 :- use_module(module_directory).
 
 run :-

@@ -1,14 +1,18 @@
-:- module(check_file,
-  [ run/0 ]
-).
+:- module(check_file, [
+  run/0
+]).
 
-:- multifile trustyuri_module/1.
-:- multifile has_correct_hash/2.
-
-:- consult(rdf/rdf_module).
-:- consult(file/file_module).
+:- use_module(module_directory).
 
 run :-
   current_prolog_flag(argv, Argv),
   writeln('NOT YET IMPLEMENTED'),
-  format('Arguments given: ~w\n', [Argv]).
+  format('Arguments given: ~w\n', [Argv]),
+  writeln('Declared modules:'),
+  (
+    trustyuri_module(M),
+    writeln(M),
+    fail
+  ;
+    true
+  ).

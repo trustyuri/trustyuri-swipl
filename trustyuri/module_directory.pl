@@ -6,6 +6,5 @@
 :- multifile trustyuri_module/1.
 :- multifile has_correct_hash/2.
 
-:- consult(rdf/rdf_module).
+:- consult(rdf/rdf_module_declaration).
 :- consult(file/file_module).
-

@@ -1,5 +1,9 @@
-trustyuri_module('RA').
+:- module(rdf_module, [
+  has_correct_hash_ra/1
+]).
 
-has_correct_hash('RA', _Resource) :-
+:- use_module(library(semweb/turtle)).
+
+has_correct_hash_ra(_Resource) :-
   writeln('NOT YET IMPLEMENTED'),
   fail.

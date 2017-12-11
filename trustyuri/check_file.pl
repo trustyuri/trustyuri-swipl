@@ -17,6 +17,7 @@ check(FileName) :-
   sub_string(ArtifactCode, 0, 2, _, ModuleString),
   atom_string(Module, ModuleString),
   open(FileName, read, ContentStream),
+  set_stream(ContentStream, encoding(utf8)),
   R = trustyuri_resource(FileName, ContentStream, ArtifactCode),
   (
     has_correct_hash(Module, R),

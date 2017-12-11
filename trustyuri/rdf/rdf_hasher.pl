@@ -2,5 +2,6 @@
   make_artifactcode/2
 ]).
 
-make_artifactcode(_Quads, '') :-
+make_artifactcode(Quads, '') :-
+  writeln(Quads),
   writeln('NOT YET IMPLEMENTED').

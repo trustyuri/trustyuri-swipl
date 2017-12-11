@@ -2,6 +2,9 @@
   make_artifactcode/2
 ]).
 
-make_artifactcode(Quads, '') :-
-  writeln(Quads),
+:- use_module(rdf_preprocessor).
+
+
+make_artifactcode(QuadsIn, ArtifactCode) :-
+  preprocess(QuadsIn, ArtifactCode, '', QuadsPre),
   writeln('NOT YET IMPLEMENTED').

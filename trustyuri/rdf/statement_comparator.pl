@@ -67,8 +67,23 @@ compare_object(D, Uri1, Uri2) :-
   compare_uri(D, Uri1, Uri2).
 
 
-compare_literal('<', _L1, _L2) :-
+compare_literal(D, L1, L2) :-
+  get_literal_value(L1, V1),
+  get_literal_value(L2, V2),
+  compare(D, V1, V2),
+  D \= '=',
+  !.
+
+compare_literal('=', _L1, _L2) :-
   writeln('NOT YET IMPLEMENTED').
+
+get_literal_value(literal(type(_, Value)), Value) :-
+  !.
+
+get_literal_value(literal(lang(_, Value)), Value) :-
+  !.
+
+get_literal_value(literal(Value), Value).
 
 
 compare_uri(D, Uri1, Uri2) :-

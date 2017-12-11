@@ -13,18 +13,17 @@ run :-
 
 
 check(FileName) :-
-  get_trustyuri_tail(FileName, Tail),
-  sub_string(Tail, 0, 2, _, ModuleString),
+  get_artifactcode(FileName, ArtifactCode),
+  sub_string(ArtifactCode, 0, 2, _, ModuleString),
   atom_string(Module, ModuleString),
-  open(FileName, read, In),
-  read_string(In, _, Content),
-  close(In),
-  R = trustyuri_resource(FileName, Content, Tail),
+  open(FileName, read, ContentStream),
+  R = trustyuri_resource(FileName, ContentStream, ArtifactCode),
   (
     has_correct_hash(Module, R),
     !,
     write('Correct hash: ' ),
-    writeln(Tail)
+    writeln(ArtifactCode)
   ;
     writeln('*** INCORRECT HASH ***')
-  ).
+  ),
+  close(ContentStream).

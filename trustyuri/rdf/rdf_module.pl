@@ -4,6 +4,9 @@
 
 :- use_module(library(semweb/turtle)).
 
-has_correct_hash_ra(_Resource) :-
-  writeln('NOT YET IMPLEMENTED'),
-  fail.
+:- use_module(rdf_hasher).
+
+has_correct_hash_ra(trustyuri_resource(_FileName, ContentStream, ArtifactCode)) :-
+  rdf_read_turtle(ContentStream, Quads, []),
+  make_artifactcode(Quads, ArtifactCodeX),
+  ArtifactCode == ArtifactCodeX.

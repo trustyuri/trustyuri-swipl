@@ -74,16 +74,68 @@ compare_literal(D, L1, L2) :-
   D \= '=',
   !.
 
-compare_literal('=', _L1, _L2) :-
-  writeln('NOT YET IMPLEMENTED').
-
-get_literal_value(literal(type(_, Value)), Value) :-
+compare_literal('<', L1, L2) :-
+  get_literal_datatype(L1, ''),
+  get_literal_datatype(L2, T2),
+  T2 \= '',
   !.
 
-get_literal_value(literal(lang(_, Value)), Value) :-
+compare_literal('>', L1, L2) :-
+  get_literal_datatype(L1, T1),
+  get_literal_datatype(L2, ''),
+  T1 \= '',
   !.
 
-get_literal_value(literal(Value), Value).
+compare_literal(D, L1, L2) :-
+  get_literal_datatype(L1, T1),
+  get_literal_datatype(L2, T2),
+  compare(D, T1, T2),
+  D \= '=',
+  !.
+
+compare_literal('<', L1, L2) :-
+  get_literal_language(L1, ''),
+  get_literal_language(L2, Lang2),
+  Lang2 \= '',
+  !.
+
+compare_literal('>', L1, L2) :-
+  get_literal_language(L1, Lang1),
+  get_literal_language(L2, ''),
+  Lang1 \= '',
+  !.
+
+compare_literal(D, L1, L2) :-
+  get_literal_language(L1, Lang1),
+  get_literal_language(L2, Lang2),
+  compare(D, Lang1, Lang2).
+
+
+get_literal_value(type(_, Value), Value) :-
+  !.
+
+get_literal_value(lang(_, Value), Value) :-
+  !.
+
+get_literal_value(Value, Value).
+
+
+get_literal_datatype(type(Type, _), Type) :-
+  !.
+
+get_literal_datatype(lang(_, _), '') :-
+  !.
+
+get_literal_datatype(_, 'http://www.w3.org/2001/XMLSchema#string').
+
+
+get_literal_language(type(_, _), '') :-
+  !.
+
+get_literal_language(lang(Lang, _), Lang) :-
+  !.
+
+get_literal_language(_, '').
 
 
 compare_uri(D, Uri1, Uri2) :-

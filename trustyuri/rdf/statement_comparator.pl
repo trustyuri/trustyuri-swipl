@@ -71,12 +71,12 @@ compare_literal('<', _L1, _L2) :-
   writeln('NOT YET IMPLEMENTED').
 
 
-compare_uri(D, _Uri1, _Uri2) :-
+compare_uri(D, Uri1, Uri2) :-
   current_artifact_code(''),
   !,
   compare(D, Uri1, Uri2).
 
-compare_uri('<', _Uri1, _Uri2) :-
+compare_uri(D, Uri1, Uri2) :-
   current_artifact_code(ArtifactCode),
   !,
   atomic_list_concat(L1, ArtifactCode, Uri1),

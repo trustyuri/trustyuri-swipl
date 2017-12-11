@@ -3,6 +3,8 @@
   get_trustyuri/4
 ]).
 
+:- encoding(utf8).
+
 :- use_module(library(regex)).
 
 

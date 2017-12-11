@@ -2,6 +2,8 @@
   has_correct_hash_ra/1
 ]).
 
+:- encoding(utf8).
+
 :- use_module(library(semweb/turtle)).
 
 :- use_module(rdf_hasher).

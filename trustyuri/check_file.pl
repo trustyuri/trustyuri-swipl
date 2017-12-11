@@ -3,6 +3,8 @@
   check/1
 ]).
 
+:- encoding(utf8).
+
 :- use_module(trustyuri_utils).
 :- use_module(module_directory).
 

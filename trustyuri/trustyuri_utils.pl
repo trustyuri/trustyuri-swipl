@@ -3,6 +3,8 @@
   get_base64/2
 ]).
 
+:- encoding(utf8).
+
 :- use_module(library(regex)).
 
 get_artifactcode(TrustyURI, '') :-

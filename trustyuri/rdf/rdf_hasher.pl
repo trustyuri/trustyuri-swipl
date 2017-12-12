@@ -26,6 +26,11 @@ make_artifactcode(QuadsIn, ArtifactCodeSeen, ArtifactCodeMade) :-
 
 serialize([], '').
 
+% Handling duplicates:
+serialize([rdf(S,P,O,G),rdf(S,P,O,G)|Rest], Serialized) :-
+  !,
+  serialize([rdf(S,P,O,G)|Rest], Serialized).
+
 serialize([rdf(S,P,O,G)|Rest], Serialized) :-
   value_to_atom(S, SA),
   value_to_atom(P, PA),

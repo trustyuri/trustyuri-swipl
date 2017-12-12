@@ -33,9 +33,7 @@ compare_statements(D, rdf(_,P1,_,_), rdf(_,P2,_,_)) :-
   !.
 
 compare_statements(D, rdf(_,_,O1,_), rdf(_,_,O2,_)) :-
-  compare_object(D, O1, O2),
-  D \= '=',
-  !.
+  compare_object(D, O1, O2).
 
 
 compare_context('=', '', '') :-
